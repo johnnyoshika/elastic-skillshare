@@ -12,6 +12,8 @@ const apacheLogImporter = async function () {
       encoding: 'utf8',
     }),
     async data => {
+      // There's a bug here. The index resets sporadically and it seems to go on forever.
+      // When the count gets to about 167,402 (which it never should b/c there are only 20K records, but it seems to max out at 167,402), stop the script.
       logs.push(data);
       if (logs.length > 1000) {
         await bulk({
