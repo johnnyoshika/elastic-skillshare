@@ -30,7 +30,7 @@ const movieImporter = function (onComplete) {
                 mappings: {
                   properties: {
                     id: { type: 'integer' },
-                    year: { type: 'date' },
+                    year: { type: 'integer' },
                     genre: { type: 'keyword' },
                     title: {
                       type: 'text',
@@ -51,7 +51,9 @@ const movieImporter = function (onComplete) {
                       ? m.title.replace(titleMatch[0], '').trim()
                       : m.title,
                     genre: m.genres.split('|'),
-                    year: titleMatch ? titleMatch[1] : undefined,
+                    year: titleMatch
+                      ? parseInt(titleMatch[1], 10)
+                      : undefined,
                   };
                 }),
               });
