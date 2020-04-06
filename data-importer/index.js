@@ -1,5 +1,6 @@
 const movieImporter = require('./movieImporter');
+const apacheLogImporter = require('./apacheLogImporter');
 
 movieImporter(() => {
-  console.log('finished');
+  apacheLogImporter();
 });
