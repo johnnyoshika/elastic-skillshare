@@ -9,7 +9,15 @@ const client = new elasticsearch.Client({
   apiVersion: '7.6',
 });
 
-async function create({ index, mappings }) {
+async function bulk({ index, mappings, dataset }) {
+  try {
+    await axios.get(`http://${host}/${index}`);
+
+    await client.indices.delete({
+      index: index,
+    });
+  } catch (error) {}
+
   await client.indices.create(
     {
       index: index,
@@ -19,21 +27,6 @@ async function create({ index, mappings }) {
     },
     { ignore: [400] },
   );
-}
-
-async function bulk({ index, mappings, dataset, reset }) {
-  try {
-    await axios.get(`http://${host}/${index}`);
-
-    if (reset) {
-      await client.indices.delete({
-        index: index,
-      });
-      await create();
-    }
-  } catch (error) {
-    await create({ index, mappings });
-  }
 
   const body = dataset.flatMap(doc => [
     { create: { _index: index, _id: doc.id } },

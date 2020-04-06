@@ -25,7 +25,6 @@ const apacheLogImporter = async function () {
           time: moment(log.time, 'DD/MMM/YYYY:HH:mm:ss Z').format(),
         };
       }),
-      reset: true,
     });
   });
 };
