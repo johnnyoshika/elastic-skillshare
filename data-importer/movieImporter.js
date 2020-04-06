@@ -48,6 +48,7 @@ const movieImporter = function (onComplete) {
                   title: m.title,
                   genre: m.genres.split('|'),
                 })),
+                reset: true,
               });
 
               await bulk({
@@ -74,6 +75,7 @@ const movieImporter = function (onComplete) {
                   title: movies.find(m => m.movieId === r.movieId)
                     .title,
                 })),
+                reset: true,
               });
 
               await bulk({
@@ -100,6 +102,7 @@ const movieImporter = function (onComplete) {
                   title: movies.find(m => m.movieId === t.movieId)
                     .title,
                 })),
+                reset: true,
               });
 
               onComplete();
