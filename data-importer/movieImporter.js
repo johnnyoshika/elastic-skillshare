@@ -43,11 +43,17 @@ const movieImporter = function (onComplete) {
                     },
                   },
                 },
-                dataset: movies.map(m => ({
-                  id: m.movieId,
-                  title: m.title,
-                  genre: m.genres.split('|'),
-                })),
+                dataset: movies.map(m => {
+                  const titleMatch = m.title.match(/\((\d{4})\)/);
+                  return {
+                    id: m.movieId,
+                    title: titleMatch
+                      ? m.title.replace(titleMatch[0], '').trim()
+                      : m.title,
+                    genre: m.genres.split('|'),
+                    year: titleMatch ? titleMatch[1] : undefined,
+                  };
+                }),
               });
 
               await bulk({
