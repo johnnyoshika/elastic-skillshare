@@ -28,6 +28,15 @@ Exercises from Elasticsearch course on Skillshare: https://www.skillshare.com/cl
 # Test installation
 * `curl -XGET 127.0.0.1:9200`
 
+# Shakespeare data
+
+## Load datatype mapping
+* `curl -H "Content-Type:application/json" -XPUT 127.0.0.1:9200/shakespeare --data-binary @shakes-mapping.json`
+* confirm: `curl -XGET 127.0.0.1:9200/shakespeare/_mapping?pretty`
+
+## Load data
+* `curl -H "Content-Type: application/json" -XPOST 127.0.0.1:9200/shakespeare/_bulk?pretty --data-binary '@shakespeare-7-0.json'`
+
 # Movie data
 
 ## Load data
