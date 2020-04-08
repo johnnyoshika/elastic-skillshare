@@ -49,7 +49,10 @@ Exercises from Elasticsearch course on Skillshare: https://www.skillshare.com/cl
 * `curl -XDELETE 127.0.0.1:9200/movies`
 
 ## Examples
-_All of these are saved in OneDrive\Fiddler\2020-04-04 elasticsearch samples from skillshare course.saz
+All of these are saved in:
+* OneDrive\Fiddler\2020-04-04 elasticsearch queries from skillshare course.saz
+* OneDrive\Fiddler\2020-04-04 elasticsearch aggregations from skillshare course.saz
+* OneDrive\Fiddler\2020-04-04 elasticsearch sql from skillshare course.saz
 
 `term` vs `match`
 
