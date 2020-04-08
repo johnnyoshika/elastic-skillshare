@@ -16,6 +16,8 @@ const apacheLogImporter = async function () {
       mappings: {
         properties: {
           time: { type: 'date' },
+          status: { type: 'keyword' },
+          sizeCLF: { type: 'integer' },
         },
       },
       dataset: lines.map(line => {

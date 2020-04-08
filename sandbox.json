@@ -1,9 +1,0 @@
-{
-  "aggs": {
-    "ratings": {
-      "terms": {
-        "field":"rating"
-      }
-    }
-  }
-}
